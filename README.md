@@ -6,6 +6,8 @@ The purpose of this project is to analyze data from a fictional online store 'Ma
 
 Four tables, 9,810 order rows before cleaning (9,780 orders), 19,714 order lines, 992 SKUs, 3,066 returned lines, January 2023 to December 2024.
 
+[Link to data cleaning observations and decisions](https://github.com/hamyqueso/maison-lune-analysis/blob/main/data_quality.md)
+
 ## Key Findings
 
 1. Revenue increased 16.15% from 2023 to 2024 but Black Friday week revenue increased by 52.0% from 2023 to 2024. Perhaps people are looking for more deals so if there is a good deal they are likely to spend more. We could offer more deals throughout the year rather than just during Black Friday week.
@@ -22,7 +24,20 @@ Four tables, 9,810 order rows before cleaning (9,780 orders), 19,714 order lines
 
 ## Charts
 
+![monthly revenue trend](https://github.com/hamyqueso/maison-lune-analysis/blob/main/charts/monthly_revenue.png?raw=true)
 
+![revenue by category](https://github.com/hamyqueso/maison-lune-analysis/blob/main/charts/revenue_by_category.png?raw=true)
+
+![revenue by style](https://github.com/hamyqueso/maison-lune-analysis/blob/main/charts/revenue_by_category.png?raw=true)
+
+## Decisions
+
+* Duplicate orders: There were 30 rows in orders that were exact duplicates.  These were removed to avoid double counting revenue.
+* Order statuses: Statuses in the orders table were normalized for accurate order sorting. Only delivered orders counted towards the total revenue number.
+* Missing order_totals: Missing order_total values were added in using data from the order_lines table in order to get a more accurate representation of revenue for the store.  The added order totals did not apply any discounts which may cause mismatch of calculated revenue compared to actual revenue.
+* Revenue source: For revenue calculations, the order_total column in the orders table was used instead of the order_lines table. As stated above, the order_lines table does not account for any discounts the customer may receive when placing the order.
+* Colors, styles, and sizes: The products table was left unchanged. Initially there seemed to be many duplicate rows but in actuality these rows included the same style and color but a different garment size.
+* One change: In order to ensure a correct calculation of the store's revenue, I would recommend that the order_totals are calculated using any discount the customer receives.
 
 ## Interview script
 
