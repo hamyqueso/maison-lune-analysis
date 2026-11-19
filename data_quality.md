@@ -1,13 +1,5 @@
 # Data Cleaning
 
-## Steps
-Measure: how many rows, how much revenue is affected.
-Look: print a few of the affected rows. Is it an error, or is it real?
-Decide: fix, drop, flag or keep, and why.
-Verify: rerun the measure after the fix.
-
-Keep the raw DataFrames untouched and build orders_clean, order_lines_clean, products_clean and returns_clean from them, so you can always compare before and after.
-
 ## Questions
 1. Are there duplicate orders?
 
